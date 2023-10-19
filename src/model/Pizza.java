@@ -1,4 +1,4 @@
-import product.Product;
+package model;
 
 public class Pizza extends Product {
    public Pizza(String categoryName, String categoryInformation, String productName, String productInformation, int price) {

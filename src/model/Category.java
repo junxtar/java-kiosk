@@ -1,5 +1,3 @@
-package category;
-
 public class Category {
    private final String categoryName;
    private final String categoryInformation;

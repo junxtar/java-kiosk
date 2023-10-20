@@ -1,20 +1,23 @@
 package model.kiosk;
 
 import model.order.Order;
+import model.product.Product;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class Kiosk extends KioskMessage {
 
-   private final List<Order> orders = new ArrayList<>();
-
+   static int orderId = 1;
+   private final List<Product> products = new ArrayList<>();
    public void run() {
       helloMessage();
       if (isGuest()) {
-         Order order = new Order();
+         Order order = orderService.initOrder();
          order.setOrderStatus(isTakeOut());
-         ordering(order);
+         products.addAll(ordering(order).getProducts());
+         successOrder(order);
+         run();
       } else {
          line();
          System.out.print("관리자 비밀번호를 입력해주세요: ");
@@ -29,7 +32,6 @@ public class Kiosk extends KioskMessage {
          }
       }
    }
-
    private boolean passwordCheck(int password) {
       return password == 1234;
    }

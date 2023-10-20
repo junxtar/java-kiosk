@@ -6,6 +6,7 @@ import java.util.Map;
 
 public class OrderService {
 
+   static int orderId = 1;
    public void orderCancel(Order order) {
       order.getProductMap().clear();
       order.getProducts().clear();
@@ -17,6 +18,12 @@ public class OrderService {
          totalPrice += product.getPrice() * productMap.get(product);
       }
       return totalPrice;
+   }
+
+   public Order initOrder() {
+      Order order = new Order();
+      order.setId(orderId++);
+      return order;
    }
 
 }

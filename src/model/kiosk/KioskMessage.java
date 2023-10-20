@@ -74,7 +74,7 @@ public class KioskMessage extends Util {
       return command;
    }
 
-   public void ordering(Order order) {
+   public Order ordering(Order order) {
       while (true) {
          int categoryId = showMenu();
          if (categoryId >= 1 && categoryId <= categoryService.getCategoriesSize()) {
@@ -94,15 +94,12 @@ public class KioskMessage extends Util {
             System.out.printf("%-20s\n", "1.주문   2.메뉴판");
             int command = validInput(CANCEL, sc.nextInt());
             if (command == OK) {
-               //order 추가
-               break;
+               return order;
             } else {
                System.out.println("메뉴판으로 돌아갑니다.");
             }
          } else if (categoryId == CLEAR) {
             orderService.orderCancel(order);
-            System.out.println("주문이 취소되었습니다.");
-            line();
          } else {
             System.out.println("[ 잘못된 입력입니다. ]");
          }
@@ -149,7 +146,14 @@ public class KioskMessage extends Util {
       }
    }
 
-   public int validInput(int maxValue, int input) {
+   public void successOrder(Order order) {
+         System.out.println("주문이 완료되었습니다!\n");
+         System.out.println("대기 번호는 [ " + order.getId() + " ] 번 입니다.");
+         System.out.println("(3초후 메뉴판으로 돌아갑니다.)");
+         // thread? 3sec ? -> run();
+   }
+
+   private int validInput(int maxValue, int input) {
       while (input < OK || input > maxValue) {
          line();
          System.out.println("[ 잘못된 입력입니다. ]");

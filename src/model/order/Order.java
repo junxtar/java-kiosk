@@ -29,6 +29,10 @@ public class Order {
       return orderStatus.getStatus();
    }
 
+   public void setId(int id) {
+      this.id = id;
+   }
+
    public void setOrderStatus(OrderStatus orderStatus) {
       this.orderStatus = orderStatus;
    }
@@ -39,13 +43,6 @@ public class Order {
 
    public void addProductMap(Product product) {
       productMap.put(product, productMap.getOrDefault(product, 0) + 1);
-   }
-
-   public Order successOrder() {
-      System.out.println(getOrderStatus() + "주문이 완료되었습니다!");
-      System.out.println("대기 번호는 [ " + getId() + " ] 번 입니다.");
-      // thread? 3sec ? -> run();
-      return this;
    }
 
 }

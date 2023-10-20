@@ -48,6 +48,8 @@ public class ExamProduct {
    public final static Product CHEESE_BALL = new Product(SIDE.getCategoryId(), SIDE.getCategoryName(), SIDE.getCategoryInformation(),
            3, "CHEESE_BALL(5EA)", "치즈가 쭈우우욱 늘어나유~", 4500);
 
+   // service
+   public final static Product TAKE_OUT_SERVICE = new Product(0,"", "", 0, "TAKE_OUT_EVENT","",-2000);
    public final static List<Product> PRODUCTS = List.of(
            PEPPERONI,
            CHEESE,

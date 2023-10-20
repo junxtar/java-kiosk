@@ -4,6 +4,8 @@ import model.product.Product;
 
 import java.util.Map;
 
+import static example.ExamProduct.TAKE_OUT_SERVICE;
+
 public class OrderService {
 
    static int orderId = 1;
@@ -23,6 +25,12 @@ public class OrderService {
    public Order initOrder() {
       Order order = new Order();
       order.setId(orderId++);
+      return order;
+   }
+
+   public Order addTakeOutService(Order order) {
+      order.addProduct(TAKE_OUT_SERVICE);
+      order.addProductMap(TAKE_OUT_SERVICE);
       return order;
    }
 

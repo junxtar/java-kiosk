@@ -63,6 +63,7 @@ public class KioskMessage extends Util {
       int command;
       while (true) {
          line();
+         System.out.println("[ 포장 주문 EVENT ] 18000원 이상 구매시 2000원 할인 ");
          System.out.printf("%20s\n", "[포장] | [매장] 여부를 선택해주세요.");
          System.out.printf("%-20s\n", "1.포장 주문 2.매장 주문");
          command = sc.nextInt();
@@ -83,12 +84,14 @@ public class KioskMessage extends Util {
             System.out.println("아래와 같이 주문 하시겠습니까?\n");
             System.out.println("[ Orders ]");
             HashMap<Product, Integer> map = order.getProductMap();
+            int totalPrice = orderService.getTotalPrice(map);
+            order = getDiscountedOrder(order, totalPrice);
+            totalPrice = orderService.getTotalPrice(map);
             for (Product product : map.keySet()) {
-               System.out.printf("%-18s | %8d 개 | %-8d ₩ | %-20s\n", product.getProductName(), map.get(product), product.getPrice(), product.getProductInformation());
+               System.out.printf("%-18s | %4d 개 | %-8d ₩ | %-20s\n", product.getProductName(), map.get(product), product.getPrice(), product.getProductInformation());
             }
             System.out.println();
             System.out.println("[ Total ]");
-            int totalPrice = orderService.getTotalPrice(map);
             System.out.printf("%-8d ₩\n", totalPrice);
             System.out.println();
             System.out.printf("%-20s\n", "1.주문   2.메뉴판");
@@ -104,6 +107,14 @@ public class KioskMessage extends Util {
             System.out.println("[ 잘못된 입력입니다. ]");
          }
       }
+   }
+
+   private Order getDiscountedOrder(Order order, int totalPrice) {
+      if (totalPrice >= 18000 && order.getOrderStatus().equals("포장")) {
+         order = orderService.addTakeOutService(order);
+      }
+
+      return order;
    }
 
    private int showMenu() {
@@ -152,10 +163,8 @@ public class KioskMessage extends Util {
       System.out.println("(3초후 메뉴판으로 돌아갑니다.)");
       for (int i = 0; i < 3; i++) {
          Thread.sleep(1000);
-         System.out.println(3-i+"sec");
+         System.out.println(3-i+"....");
       }
-
-      // thread? 3sec ? -> run();
    }
 
    private int validInput(int maxValue, int input) {

@@ -146,11 +146,16 @@ public class KioskMessage extends Util {
       }
    }
 
-   public void successOrder(Order order) {
-         System.out.println("주문이 완료되었습니다!\n");
-         System.out.println("대기 번호는 [ " + order.getId() + " ] 번 입니다.");
-         System.out.println("(3초후 메뉴판으로 돌아갑니다.)");
-         // thread? 3sec ? -> run();
+   public void successOrder(Order order) throws InterruptedException {
+      System.out.println("주문이 완료되었습니다!\n");
+      System.out.println("대기 번호는 [ " + order.getId() + " ] 번 입니다.");
+      System.out.println("(3초후 메뉴판으로 돌아갑니다.)");
+      for (int i = 0; i < 3; i++) {
+         Thread.sleep(1000);
+         System.out.println(3-i+"sec");
+      }
+
+      // thread? 3sec ? -> run();
    }
 
    private int validInput(int maxValue, int input) {

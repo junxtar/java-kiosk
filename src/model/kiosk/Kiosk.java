@@ -10,7 +10,7 @@ public class Kiosk extends KioskMessage {
 
    static int orderId = 1;
    private final List<Product> products = new ArrayList<>();
-   public void run() {
+   public void run() throws InterruptedException {
       helloMessage();
       if (isGuest()) {
          Order order = orderService.initOrder();

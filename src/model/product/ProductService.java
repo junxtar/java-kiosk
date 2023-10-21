@@ -14,8 +14,13 @@ public class ProductService {
               .findFirst().get();
    }
 
-   public List<Product> findProducts(int id) {
+   public List<Product> findByProducts(int id) {
       return products.stream().filter(p -> p.getCategoryId() == id).toList();
    }
+
+   public int getOrdersTotalPrice (List<Product> products) {
+      return products.stream().mapToInt(Product::getPrice).sum();
+   }
+
 
 }

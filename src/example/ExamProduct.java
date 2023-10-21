@@ -1,5 +1,6 @@
 package example;
 
+import model.pizza.Pizza;
 import model.product.Product;
 
 import java.util.List;
@@ -11,15 +12,15 @@ import static example.ExamCategory.SIDE;
 
 public class ExamProduct {
    // pizza
-   public final static Product PEPPERONI = new Product(PIZZA.getCategoryId(), PIZZA.getCategoryName(), PIZZA.getCategoryInformation(),
+   public final static Pizza PEPPERONI = new Pizza(PIZZA.getCategoryId(), PIZZA.getCategoryName(), PIZZA.getCategoryInformation(),
            1, "PEPPERONI_PIZZA", "피자러버들의 함성소리가 들립니다. 무슨 말이 필요할까요", 18000);
-   public final static Product CHEESE = new Product(PIZZA.getCategoryId(), PIZZA.getCategoryName(), PIZZA.getCategoryInformation(),
+   public final static Pizza CHEESE = new Pizza(PIZZA.getCategoryId(), PIZZA.getCategoryName(), PIZZA.getCategoryInformation(),
            2, "CHEESE_PIZZA", "토핑이 없어도 이렇게 맛있을 수 있구나. 감탄 준비하세요", 18000);
-   public final static Product HAWAIIAN = new Product(PIZZA.getCategoryId(), PIZZA.getCategoryName(), PIZZA.getCategoryInformation(),
+   public final static Pizza HAWAIIAN = new Pizza(PIZZA.getCategoryId(), PIZZA.getCategoryName(), PIZZA.getCategoryInformation(),
            3, "HAWAIIAN_PIZZA", "진지하게 말씀드리지만 맛있습니다.(내피셜)", 18000);
-   public final static Product SWEET_POTATO = new Product(PIZZA.getCategoryId(), PIZZA.getCategoryName(), PIZZA.getCategoryInformation(),
+   public final static Pizza SWEET_POTATO = new Pizza(PIZZA.getCategoryId(), PIZZA.getCategoryName(), PIZZA.getCategoryInformation(),
            4, "SWEET_POTATO_PIZZA", "피자계의 입문코스이자, 한국의 3대장 피자 중 하나", 18000);
-   public final static Product BULGOGI = new Product(PIZZA.getCategoryId(), PIZZA.getCategoryName(), PIZZA.getCategoryInformation(),
+   public final static Pizza BULGOGI = new Pizza(PIZZA.getCategoryId(), PIZZA.getCategoryName(), PIZZA.getCategoryInformation(),
            5, "BULGOGI_PIZZA", "한국과 이탈리아의 최고의 콜라보!", 18000);
 
    // beverage

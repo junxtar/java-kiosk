@@ -5,6 +5,8 @@ import model.category.CategoryService;
 import model.order.Order;
 import model.order.OrderService;
 import model.order.OrderStatus;
+import model.pizza.Pizza;
+import model.pizza.Size;
 import model.product.Product;
 import model.product.ProductService;
 
@@ -148,6 +150,7 @@ public class KioskMessage extends Util {
       Product product = productService.findByCategoryIdAndProductId(categoryId, productId);
       line();
       System.out.printf("%-18s | %-8d ₩ | %-20s\n", product.getProductName(), product.getPrice(), product.getProductInformation());
+      product = optionSizeOfPizza(product);
       System.out.printf("%-20s\n", "1.확인      2.취소");
       int command = validInput(OK, CANCEL, sc.nextInt());
       if (command == OK) {
@@ -158,6 +161,41 @@ public class KioskMessage extends Util {
       if (command == CANCEL) {
          System.out.println("메뉴 선택이 취소되었습니다.\n");
       }
+   }
+
+   private Product optionSizeOfPizza(Product product) {
+      if (product instanceof Pizza) {
+         System.out.println("위 메뉴의 어떤 옵션으로 추가하시겠습니까? ");
+         int idx = 1;
+         for (Size s : Size.values()) {
+            System.out.printf("%2d. %2s(%-4d W)\n",idx++,s.getSize(), product.getPrice() + s.getPrice());
+         }
+         int command = validInput(1, Size.values().length, sc.nextInt());
+         String pizzaName = product.getProductName();
+         int pizzaPrice = product.getPrice();
+         String size = "";
+         int price = 0;
+         if (command == 1) {
+            size = "("+ Size.SMALL.getSize() +")";
+            price = Size.SMALL.getPrice();
+            ((Pizza) product).setSize(Size.SMALL);
+         } else if (command == 2) {
+            size = "("+ Size.MEDIUM.getSize() +")";
+            price = Size.MEDIUM.getPrice();
+            ((Pizza) product).setSize(Size.MEDIUM);
+         } else {
+            size = "("+ Size.LARGE.getSize() +")";
+            price = Size.LARGE.getPrice();
+            ((Pizza) product).setSize(Size.LARGE);
+         }
+         pizzaName += size;
+         pizzaPrice += price;
+         line();
+         System.out.printf("%-18s | %-8d ₩ | %-20s\n", pizzaName, pizzaPrice, product.getProductInformation());
+         return new Product(product.getCategoryId(), product.getCategoryName(), product.getCategoryInformation(),
+                 product.getProductId(), pizzaName, product.getProductInformation(), pizzaPrice);
+      }
+      return product;
    }
 
    public void successOrder(Order order) throws InterruptedException {

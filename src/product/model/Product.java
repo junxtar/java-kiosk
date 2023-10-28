@@ -3,7 +3,6 @@ package product.model;
 import category.model.Category;
 
 public class Product extends Category {
-
    private final int productId;
    private final String productName;
    private final String productInformation;
@@ -32,5 +31,4 @@ public class Product extends Category {
    public int getPrice() {
       return price;
    }
-
 }

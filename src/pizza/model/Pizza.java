@@ -1,6 +1,6 @@
-package model.pizza;
+package pizza.model;
 
-import model.product.Product;
+import product.model.Product;
 
 public class Pizza extends Product {
 

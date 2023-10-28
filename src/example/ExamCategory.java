@@ -1,6 +1,6 @@
 package example;
 
-import model.category.Category;
+import category.model.Category;
 
 public class ExamCategory {
    public final static Category PIZZA = new Category(1, "Pizza", "쫄깃한 도우와 이탈리아 치즈 그리고 수제 소스의 환상적인 궁합");

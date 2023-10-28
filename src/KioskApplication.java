@@ -1,10 +1,10 @@
-import model.kiosk.Kiosk;
+import kiosk.controller.KioskController;
 
 import java.security.NoSuchAlgorithmException;
 
-public class Main {
+public class KioskApplication {
    public static void main(String[] args) throws InterruptedException, NoSuchAlgorithmException {
-      Kiosk kisok = new Kiosk();
+      KioskController kisok = new KioskController();
       kisok.run();
    }
 }

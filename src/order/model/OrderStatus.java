@@ -1,4 +1,4 @@
-package model.order;
+package order.model;
 
 public enum OrderStatus {
 

@@ -1,4 +1,4 @@
-package model.category;
+package category.model;
 
 public class Category {
 

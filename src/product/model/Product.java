@@ -1,6 +1,6 @@
-package model.product;
+package product.model;
 
-import model.category.Category;
+import category.model.Category;
 
 public class Product extends Category {
 

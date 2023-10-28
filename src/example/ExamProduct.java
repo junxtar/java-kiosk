@@ -1,7 +1,7 @@
 package example;
 
-import model.pizza.Pizza;
-import model.product.Product;
+import pizza.model.Pizza;
+import product.model.Product;
 
 import java.util.List;
 

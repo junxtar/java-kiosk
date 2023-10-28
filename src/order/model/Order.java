@@ -1,6 +1,6 @@
-package model.order;
+package order.model;
 
-import model.product.Product;
+import product.model.Product;
 
 import java.util.ArrayList;
 import java.util.HashMap;

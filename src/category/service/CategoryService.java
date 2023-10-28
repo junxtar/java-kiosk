@@ -1,4 +1,6 @@
-package model.category;
+package category.service;
+
+import category.model.Category;
 
 import java.util.List;
 

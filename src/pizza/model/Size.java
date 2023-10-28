@@ -1,4 +1,4 @@
-package model.pizza;
+package pizza.model;
 
 public enum Size {
    SMALL("S", -5000),

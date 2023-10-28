@@ -1,6 +1,7 @@
-package model.order;
+package order.service;
 
-import model.product.Product;
+import order.model.Order;
+import product.model.Product;
 
 import java.util.Map;
 

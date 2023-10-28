@@ -1,21 +1,24 @@
-package model.kiosk;
+package kiosk.service;
 
-import model.category.Category;
-import model.category.CategoryService;
-import model.order.Order;
-import model.order.OrderService;
-import model.order.OrderStatus;
-import model.pizza.Pizza;
-import model.pizza.Size;
-import model.product.Product;
-import model.product.ProductService;
+import category.model.Category;
+import category.service.CategoryService;
+import order.model.Order;
+import order.model.OrderStatus;
+import order.service.OrderService;
+import pizza.model.Pizza;
+import pizza.model.Size;
+import product.model.Product;
+import product.service.ProductService;
 
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.HashMap;
 import java.util.List;
 
-public class KioskMessage extends Util {
+import static util.context.UtilContext.line;
+import static util.context.UtilContext.sc;
+
+public class KioskService {
 
    private static final int EXIT = 0;
    private static final int OK = 1;
@@ -31,17 +34,8 @@ public class KioskMessage extends Util {
    ProductService productService = new ProductService();
    OrderService orderService = new OrderService();
 
-   public void line() {
-      System.out.println("--------------------------------------------------------");
-   }
-
-   public void helloMessage() {
-      System.out.println("Junxtar Pizza 에 오신걸 환영합니다!");
-   }
-
    public boolean isGuest() {
       int command = getValidUserRoleInput();
-
       return command == GUEST;
    }
 
@@ -93,7 +87,7 @@ public class KioskMessage extends Util {
             order = getDiscountedOrder(order, totalPrice);
             totalPrice = orderService.getTotalPrice(map);
             for (Product product : map.keySet()) {
-               System.out.printf("%-18s | %4d 개 | %-8d ₩ | %-20s\n", product.getProductName(), map.get(product), product.getPrice(), product.getProductInformation());
+               System.out.printf("%-24s | %4d 개 | %-8d ₩ | %-20s\n", product.getProductName(), map.get(product), product.getPrice(), product.getProductInformation());
             }
             System.out.println();
             System.out.println("[ Total ]");

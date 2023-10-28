@@ -7,7 +7,6 @@ import java.util.HashMap;
 import java.util.List;
 
 public class Order {
-
    private int id;
    private final List<Product> products = new ArrayList<>();
    private final HashMap<Product, Integer> productMap = new HashMap<>();
@@ -44,5 +43,4 @@ public class Order {
    public void addProductMap(Product product) {
       productMap.put(product, productMap.getOrDefault(product, 0) + 1);
    }
-
 }

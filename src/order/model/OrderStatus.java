@@ -1,7 +1,6 @@
 package order.model;
 
 public enum OrderStatus {
-
    TAKE_OUT("포장"),
    DINE_IN("매장 식사");
 
@@ -14,5 +13,4 @@ public enum OrderStatus {
    public String getStatus() {
       return status;
    }
-
 }

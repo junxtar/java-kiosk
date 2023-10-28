@@ -8,7 +8,6 @@ import java.util.Map;
 import static example.ExamProduct.TAKE_OUT_SERVICE;
 
 public class OrderService {
-
    static int orderId = 1;
    public void orderCancel(Order order) {
       order.getProductMap().clear();
@@ -32,7 +31,7 @@ public class OrderService {
    public Order addTakeOutService(Order order) {
       order.addProduct(TAKE_OUT_SERVICE);
       order.addProductMap(TAKE_OUT_SERVICE);
+
       return order;
    }
-
 }

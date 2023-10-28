@@ -5,8 +5,8 @@ public enum Size {
    MEDIUM("M", 0),
    LARGE("L", 5000);
 
-   private String size;
-   private int price;
+   private final String size;
+   private final int price;
 
    Size(String size, int price) {
       this.size = size;
